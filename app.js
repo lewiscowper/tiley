@@ -23,7 +23,7 @@ var initials = function(source){
 
 var generateImage = function(size, color, font, text, format){
   // this isnt working but would mean we dont need to read the blank image
-  // imageMagick(100, 100, color). 
+  // imageMagick(100, 100, color).
   // read a blank template image
   return imageMagick('fixtures/blank.png').
   fill(color).
@@ -39,7 +39,7 @@ app.set('view engine', 'ejs');
 app.use(morgan())
 
 app.get('/avatar/:id(\\d+)/:initials(\\w{1,2}).svg', function(req, res){
-  var color = defaultPalette[req.params.id % defaultPalette.length] 
+  var color = defaultPalette[req.params.id % defaultPalette.length]
   var initials = req.params.initials.toUpperCase();
   res.setHeader("Content-Type", "image/svg+xml");
   res.setHeader("Vary", "Accept-Encoding");
@@ -51,11 +51,11 @@ app.get('/avatar/:id(\\d+)/:initials.:format(png|jpg)', function(req, res){
   var color = defaultPalette[req.params.id % defaultPalette.length];
   var font = 'fixtures/opensans-semibold.ttf';
   var text = initials(req.params.initials);
-  var format = req.params.format 
+  var format = req.params.format
   res.set('Content-Type', 'image/' + format);
   generateImage(size, color, font, text, format).stream(function (err, stdout, stderr) {
     if (err) return next(err);
-    stdout.pipe(res); 
+    stdout.pipe(res);
   });
 });
 
@@ -66,6 +66,8 @@ app.get("/colors", function(req, res){
 app.get('/', function(req, res){
   res.render('home')
 })
+
+app.use(express.static(__dirname + '/static'))
 
 console.log('Sqwiggle Avatars Listening On Port: ' + port)
 console.log('Default Palette Size: ' + size)
