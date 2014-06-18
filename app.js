@@ -67,9 +67,9 @@ app.get('/', function(req, res){
   res.render('home')
 })
 
-app.use(express.static(__dirname + '/static'))
+app.use(express.static(__dirname + '/assets'))
 
-console.log('Sqwiggle Avatars Listening On Port: ' + port)
+console.log('Tiley Listening On Port: ' + port)
 console.log('Default Palette Size: ' + size)
 console.log('Default Seed Value: ' + seed)
 console.log('Default Saturation Value: ' + s)

@@ -1,3 +1,13 @@
+<html>
+<head>
+<title>Tiley - Palette</title>
+<link rel="stylesheet" href="/css/main.css" type="text/css" />
+</head>
+<header>
+<a href="../"><img src="/img/logo.png"></img></a>
+</header>
 <% for(var i=0; i<palette.length; i++) {%>
-<div style="width:100px;height:100px;background-color:<%= palette[i] %>"></div>
+<p class="label"><%= palette[i] %></p>
+<div class="box" style="background-color:<%= palette[i] %>"></div>
 <% } %>
+</html>
